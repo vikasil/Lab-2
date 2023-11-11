@@ -17,7 +17,7 @@ print("task2")
 print("Введите автора")
 avtor=input()
 with open('books.csv', newline='') as File:  
-    reader = csv.reader(File)
+    reader = csv.reader(File )
     for row in reader:
         row=str(row)
         #print(row.split(";")[3])
