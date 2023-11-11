@@ -1,20 +1,27 @@
-from csv import reader
-
-
-flag = 0
-output = open('result.txt', 'w')
-search = input('Search for: ')
-with open('civic.csv', 'r', encoding='windows-1251') as csvfile:
-    table = reader(csvfile, delimiter=';')
-    for row in table:
-        lower_case = row[2].lower()
-        index = lower_case.find(search.lower())
-        if index != -1:
-            print(row[2])
-            flag = 1
-            output.write(f'{row[0]}. {row[2]}. Цена {row[8]} рублей.\n')
-
-    if flag == 0:
-        print('Nothing found.')
-
-output.close()
+import csv
+with open('books.csv', newline='') as File:  
+    reader = csv.reader(File)
+    print("task1")
+    i=0
+    kol=0
+    for row in reader:
+        row=str(row)
+        i+=1
+        if i>1:
+            nazv=row.split(";")[1]
+            if len(nazv)>30:
+                #print(nazv,len(nazv))
+                kol+=1
+print(kol)
+print("task2")
+print("Введите автора")
+avtor=input()
+with open('books.csv', newline='') as File:  
+    reader = csv.reader(File)
+    for row in reader:
+        row=str(row)
+        #print(row.split(";")[3])
+        i+=1
+        if i>1:
+            if (row.split(";")[3]==avtor) and (float(row.split(";")[7])>=150.0):
+                print(row.split(";")[1])
